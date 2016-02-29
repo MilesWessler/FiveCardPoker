@@ -16,7 +16,6 @@ namespace Poker
             this._fileName = filename;
         }
 
-    
         public void WriteObjectToFile(object obj)
         {
             using (FileStream fs = new FileStream(_fileName, FileMode.Create, FileAccess.Write))

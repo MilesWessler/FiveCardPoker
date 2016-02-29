@@ -34,41 +34,7 @@ namespace Poker
             _sortedPlayerTwoHand = new Card[5];
         }
 
-        public void Deal(List<Player> players)
-        {
-            Players = players;
-            Betting bet = new Betting();
-
-            bool quit = false;
-            while (!quit)
-            {
-                bet.DisplayBetMessage(players);
-                CreateDeck();
-                GetHand();
-                SortCards();
-                DisplayCards(players);
-                Evaulate();
-                bet.DisplayStackSize(players);
-                Console.ReadKey();
-                Console.Clear();
-
-
-                char selection = ' ';
-                while (!selection.Equals('Y') && !selection.Equals('N'))
-                {
-                    Console.WriteLine("Play again? Y - N");
-
-                    selection = Convert.ToChar(Console.ReadLine().ToUpper());
-
-                    if (selection.Equals('Y'))
-                        quit = false;
-                    else if (selection.Equals('N'))
-                        quit = true;
-                    else
-                        Console.WriteLine("Invalid Selection. Try Again");
-                }
-            }
-        }
+  
 
         public void GetHand()
         {

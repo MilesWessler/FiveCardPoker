@@ -3,4 +3,3 @@ C:\Users\miles\Desktop\C#\Poker\Poker\bin\Debug\Poker.exe
 C:\Users\miles\Desktop\C#\Poker\Poker\bin\Debug\Poker.pdb
 C:\Users\miles\Desktop\C#\Poker\Poker\obj\Debug\Poker.exe
 C:\Users\miles\Desktop\C#\Poker\Poker\obj\Debug\Poker.pdb
-C:\Users\miles\Desktop\C#\Poker\Poker\obj\Debug\Poker.csprojResolveAssemblyReference.cache

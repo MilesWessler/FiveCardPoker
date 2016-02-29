@@ -12,19 +12,10 @@ namespace Poker
     {
         static void Main(string[] args)
         {
-         Game game = new Game();
-            
-            
+            Game game = new Game();
+            Console.ReadLine();
 
-
-            Console.ReadLine(); 
-
-
-
-
-
-
-        }
         }
     }
+}
 

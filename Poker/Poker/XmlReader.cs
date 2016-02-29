@@ -43,19 +43,6 @@ namespace Poker
                 }
             }
             
-        }
-
-        //public void ReadBankRoll()
-        //{
-        //    XmlDocument xml = new XmlDocument();
-        //    xml.LoadXml(_path + "//PokerAccountInfo.settings.xml");
-
-        //    XmlNode xnList = xml.SelectSingleNode("/Bankroll/Bankroll")
-
-        //    foreach (XmlNode xn in )
-        //    {
-                
-        //    }
-        //}
+        }  
     }
 }

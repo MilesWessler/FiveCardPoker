@@ -45,8 +45,8 @@ namespace Poker
                 var p = new Player();
                 p.Name = xNode.SelectSingleNode("Name").InnerText;
                 //p.BankRoll = Convert.ToDouble(xNode.SelectSingleNode("BankRoll").InnerText);
-                p.NumberOfTournamentWins = Convert.ToInt32(xNode.SelectSingleNode("NumberOfTournamentWins"));
-                p.NumberOfSitAndGoWins = Convert.ToInt32(xNode.SelectSingleNode("NumberOfSitAndGoWins"));
+                Player.NumberOfTournamentWins = Convert.ToInt32(xNode.SelectSingleNode("NumberOfTournamentWins"));
+                
                 Players.Add(p);
             }
           
@@ -59,8 +59,8 @@ namespace Poker
                 XmlNode xNumberOfSitAndGoWins = xDoc.CreateElement("NumberOfSitAndGoWins");
                 xName.InnerText = p.Name;
                 xBankRoll.InnerText = p.BankRoll.ToString();
-                xNumberOfSitAndGoWins.InnerText = p.NumberOfSitAndGoWins.ToString();
-                xNumberOfTournamentWins.InnerText = p.NumberOfTournamentWins.ToString();
+                
+                xNumberOfTournamentWins.InnerText = Player.NumberOfTournamentWins.ToString();
                 xtop.AppendChild(xName);
                 xtop.AppendChild(xBankRoll);
                 xtop.AppendChild(xNumberOfSitAndGoWins);

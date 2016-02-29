@@ -10,12 +10,5 @@ namespace Poker
     {
         public int AmountOfChips { get; set; }
 
-       
-
-
-
-
-
-
     }
 }
