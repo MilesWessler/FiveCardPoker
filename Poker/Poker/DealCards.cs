@@ -49,7 +49,7 @@ namespace Poker
                 DisplayCards(players);
                 Evaulate();
                 bet.DisplayStackSize(players);
-                Console.ReadKey(); 
+                Console.ReadKey();
                 Console.Clear();
 
 
@@ -69,6 +69,7 @@ namespace Poker
                 }
             }
         }
+
         public void GetHand()
         {
             for (int i = 0; i < 5; i++)
@@ -102,6 +103,7 @@ namespace Poker
             }
 
         }
+
         public void DisplayCards(List<Player> players)
         {
             Players = players;
@@ -117,7 +119,7 @@ namespace Poker
             {
                 DrawCards.DrawCardOutline(x, y);
                 DrawCards.DrawCardSuitAndValue(_sortedPlayerHand[i], x, y);
-                x++;//move to the right
+                x++; //move to the right
             }
             y = 15;
             x = 0;
@@ -130,10 +132,11 @@ namespace Poker
             {
                 DrawCards.DrawCardOutline(x, y);
                 DrawCards.DrawCardSuitAndValue(_sortedPlayerTwoHand[i - 5], x, y);
-                x++;//move to the right 
+                x++; //move to the right 
             }
 
         }
+
         public void Evaulate()
         {
             EvaluateHand evaluatePlayerHand = new EvaluateHand(_sortedPlayerHand);
@@ -142,55 +145,53 @@ namespace Poker
             Hand playerOneHand = evaluatePlayerHand.EvaluateHands();
             Hand playerTwoHand = evaluatePlayerTwoHand.EvaluateHands();
 
-          
-            
-
             Console.WriteLine("\n\n\n\n\n" + Players[0].Name + " Hand: " + playerOneHand);
             Console.WriteLine("\n" + Players[1].Name + " Hand: " + playerTwoHand);
 
             if (playerOneHand > playerTwoHand)
             {
-                
-                Console.WriteLine(Players[0].Name + " Wins!");
-                
-
-            }
-            if (playerOneHand < playerTwoHand)
-            {
-               
-                Console.WriteLine(Players[1].Name + " Wins!");
-                
-            }
-            //first evaluate who has higher value of poker hand
-            if (evaluatePlayerHand.HandValues.Total > evaluatePlayerTwoHand.HandValues.Total)
-            {
-                
+                Betting.PlayerOneStackSizeWin();
+                Betting.PlayerTwoStackSizeLose();
                 Console.WriteLine(Players[0].Name + " Wins!");
 
-               
             }
-            if (evaluatePlayerHand.HandValues.Total < evaluatePlayerTwoHand.HandValues.Total)
+            else if (playerOneHand < playerTwoHand)
             {
-               
                 Console.WriteLine(Players[1].Name + " Wins!");
-               
+
             }
-            //if both have the same poker hand then player with high card wins
-            if (evaluatePlayerHand.HandValues.HighCard > evaluatePlayerTwoHand.HandValues.HighCard)
+            else
             {
-                
-                Console.WriteLine(Players[0].Name + " Wins!");
-               
+                //first evaluate who has higher value of poker hand
+                if (evaluatePlayerHand.HandValues.Total > evaluatePlayerTwoHand.HandValues.Total)
+                {
+                    Betting.PlayerOneStackSizeWin();
+                    Betting.PlayerTwoStackSizeLose();
+                    Console.WriteLine(Players[0].Name + " Wins!");
+                }
+                else if (evaluatePlayerHand.HandValues.Total < evaluatePlayerTwoHand.HandValues.Total)
+                {
+                    Betting.PlayerTwoStackSizeWin();
+                    Betting.PlayerOneStackSizeLose();
+                    Console.WriteLine(Players[1].Name + " Wins!");
+                }
+                //if both have the same poker hand then player with high card wins
+                else if (evaluatePlayerHand.HandValues.HighCard > evaluatePlayerTwoHand.HandValues.HighCard)
+                {
+                    Betting.PlayerOneStackSizeWin();
+                    Betting.PlayerTwoStackSizeLose();
+                    Console.WriteLine(Players[0].Name + " Wins!");
+                }
+                else if (evaluatePlayerHand.HandValues.HighCard < evaluatePlayerTwoHand.HandValues.HighCard)
+                {
+                    Betting.PlayerTwoStackSizeWin();
+                    Betting.PlayerOneStackSizeLose();
+                    Console.WriteLine(Players[1].Name + " Wins!");
+                }
+                else
+                    Console.WriteLine("Draw");       
             }
-            if (evaluatePlayerHand.HandValues.HighCard < evaluatePlayerTwoHand.HandValues.HighCard)
-            {
-                Betting.PlayerOneCurrentStack++;
-                Betting.PlayerTwoCurrentStack++;
-                Console.WriteLine(Players[1].Name + " Wins!");
-               
-            }
-            Console.WriteLine("Draw");
-            
         }
     }
 }
+

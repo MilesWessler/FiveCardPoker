@@ -12,11 +12,22 @@ namespace Poker
         public double BankRoll { get; set; }
         public int NumberOfTournamentWins { get; set; }
         public int NumberOfSitAndGoWins { get; set; }
-        public int BetAmount { get; set; }
+        public static int BetAmount { get; set; }
         public int StackSize { get; set; }
-    
-    
+        public static int PlayerOneCurrentStack { get; set; }
+        public static int PlayerTwoCurrentStack { get; set; }
+        
 
+
+        public Player(string name, double bankRoll, int numberOfTournamentWins, int numberOfSitAndGoWins, int betAmount, int stackSize)
+        {
+            Name = name;
+            BankRoll = bankRoll;
+            NumberOfTournamentWins = numberOfTournamentWins;
+            NumberOfSitAndGoWins = numberOfSitAndGoWins;
+            BetAmount = betAmount;
+            StackSize = stackSize;
+        }
 
         public Player()
         {

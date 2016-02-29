@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -15,13 +15,11 @@ namespace Poker
         public Player Player = new Player();
         public static List<Player> Players = new List<Player>();
         public static int StartingStackSize = 1000;
-        public static int PlayerOneCurrentStack { get; set; }
-        public static int PlayerTwoCurrentStack { get; set; }
         public static int PotSize
         {
             get
             {
-                return Players.Sum(_player => _player.BetAmount);
+                return Players.Sum(_player => Poker.Player.BetAmount);
             }
         }
 
@@ -29,10 +27,35 @@ namespace Poker
         {
             foreach (Player player in Players)
             {
-                PlayerOneCurrentStack = PotSize + StartingStackSize;
+                Poker.Player.PlayerOneCurrentStack = PotSize + StartingStackSize;
             }
-            return PlayerOneCurrentStack; 
+            return Poker.Player.PlayerOneCurrentStack; 
         }
+        public static int PlayerTwoStackSizeWin()
+        {
+            foreach (Player player in Players)
+            {
+                Poker.Player.PlayerTwoCurrentStack = PotSize + StartingStackSize;
+            }
+            return Poker.Player.PlayerTwoCurrentStack;
+        }
+        public static int PlayerOneStackSizeLose()
+        {
+            foreach (Player player in Players)
+            {
+                Poker.Player.PlayerOneCurrentStack = StartingStackSize - Poker.Player.BetAmount;
+            }
+            return Poker.Player.PlayerOneCurrentStack;
+        }
+        public static int PlayerTwoStackSizeLose()
+        {
+            foreach (Player player in Players)
+            {
+                Poker.Player.PlayerTwoCurrentStack = StartingStackSize - Poker.Player.BetAmount;
+            }
+            return Poker.Player.PlayerTwoCurrentStack;
+        }
+
 
 
 
@@ -42,9 +65,9 @@ namespace Poker
             Players = players;
 
             WriteLine(players[0].Name + "Please place your bet");
-            Players[0].BetAmount = Convert.ToInt32(ReadLine());
+            Poker.Player.BetAmount = Convert.ToInt32(ReadLine());
             WriteLine(players[1].Name + "Please place your bet");
-            Players[1].BetAmount = Convert.ToInt32(ReadLine());
+            Poker.Player.BetAmount = Convert.ToInt32(ReadLine());
 
             WriteLine("The pot size is {0}", PotSize);
         }
@@ -53,10 +76,8 @@ namespace Poker
         {
             Players = players;
 
-            WriteLine(value: players[0].Name + "Current Stack Size: " + PlayerOneCurrentStack);
-            WriteLine(value: players[1].Name + "Current Stack Size: " + PlayerTwoCurrentStack);
-
-
+            WriteLine(players[0].Name + "Current Stack Size: " + Poker.Player.PlayerOneCurrentStack);
+            WriteLine(players[1].Name + "Current Stack Size: " + Poker.Player.PlayerTwoCurrentStack);
         }
 
 
